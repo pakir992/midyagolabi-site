@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sitemap.xml — a machine-readable list of every page on the site,
+     so search engines can discover and index all of them. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.midyagolabi.com/</loc>
+  </url>
+  <url>
+    <loc>https://www.midyagolabi.com/about.html</loc>
+  </url>
+  <url>
+    <loc>https://www.midyagolabi.com/projects.html</loc>
+  </url>
+  <url>
+    <loc>https://www.midyagolabi.com/contact.html</loc>
+  </url>
+  <url>
+    <loc>https://www.midyagolabi.com/tiny-house.html</loc>
+  </url>
+</urlset>

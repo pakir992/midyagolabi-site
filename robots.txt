@@ -1,0 +1,7 @@
+# robots.txt — tells search engine crawlers what they may visit.
+# "User-agent: *" = rules apply to all crawlers; empty "Disallow:" = nothing is blocked.
+User-agent: *
+Disallow:
+
+# Where the sitemap lives (helps Google find all pages)
+Sitemap: https://www.midyagolabi.com/sitemap.xml
