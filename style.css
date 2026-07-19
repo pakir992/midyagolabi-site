@@ -1,0 +1,406 @@
+/* =====================================================
+   style.css — shared by ALL pages.
+   One stylesheet, many pages: each page only "uses" the
+   rules whose classes appear in its HTML.
+   ===================================================== */
+
+/* ---------- 1. VARIABLES + RESET ---------- */
+
+:root {
+  --bg: #faf8f4;          /* warm paper white */
+  --text: #1c1a17;        /* soft black */
+  --muted: #8a8378;       /* warm gray */
+  --accent: #9c5b3c;      /* copper, like the staircase */
+  --max-width: 1100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* ---------- 2. HEADER: hamburger + dropdown (every page) ---------- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 10;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 1px;
+  background: var(--text);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* open state: bars morph into an X */
+.site-header.open .menu-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.site-header.open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+.site-header.open .menu-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.site-nav {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  background: var(--bg);
+  padding: 1.5rem;
+}
+
+.site-header.open .site-nav {
+  display: flex;
+}
+
+.site-nav a {
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+/* ---------- 3. MAIN PAGE HERO ---------- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.monogram {
+  font-size: clamp(8rem, 30vw, 18rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.name {
+  margin-top: 1.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- 4. INNER PAGE LAYOUT ---------- */
+
+/* shared column for about / projects / contacts / descriptions.
+   Big top padding clears the fixed header. */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 8rem 1.5rem 5rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+}
+
+.about-text {
+  max-width: 55ch;
+  font-size: 1.15rem;
+}
+
+.contact-link {
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+}
+
+/* ---------- 5. PROJECTS LIST ---------- */
+
+.project-list {
+  display: grid;
+  /* auto-fill columns min 320px → 1 col on phone, 2-3 on desktop */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;        /* cards crop OK — full images live on
+                               the project page itself */
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover img {
+  opacity: 0.85;            /* subtle hover feedback */
+}
+
+.project-card h2 {
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+.project-card-note {
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- 6. PROJECT PAGE: SHADED HERO ---------- */
+
+.project-hero {
+  position: relative;       /* anchor for the absolutely-placed text */
+  height: 70vh;
+}
+
+.project-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ::after = invisible extra element ON TOP of the image.
+   The gradient is the "shade": dark at the bottom, clear on top,
+   so the white title stays readable over any photo. */
+.project-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;                 /* shorthand: top/right/bottom/left = 0 */
+  background: linear-gradient(
+    to top,
+    rgba(20, 15, 10, 0.75) 0%,
+    rgba(20, 15, 10, 0.15) 45%,
+    rgba(20, 15, 10, 0) 100%
+  );
+}
+
+.project-hero-text {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  z-index: 1;               /* above the ::after shade */
+  color: #faf8f4;
+}
+
+.project-hero-text h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.project-hero-text p {
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+/* ---------- 7. IMAGES FOLDER ---------- */
+
+.folder-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 3rem;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--muted);
+  border-bottom: 1px solid var(--muted);
+  width: 100%;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  font-family: system-ui, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+/* the ▸ arrow rotates down when open */
+.folder-icon {
+  transition: transform 0.3s ease;
+}
+
+.folder-toggle.open .folder-icon {
+  transform: rotate(90deg);
+}
+
+.folder-count {
+  color: var(--muted);
+  margin-left: auto;        /* pushes the number to the right edge */
+}
+
+/* preview grid: hidden until the folder is opened */
+.folder-content {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  padding: 1.5rem 0;
+}
+
+.folder-content.open {
+  display: grid;
+}
+
+.folder-content img {
+  width: 100%;
+  aspect-ratio: 1;          /* square previews, like a file manager */
+  object-fit: cover;
+  cursor: pointer;          /* signals "clickable" */
+  transition: opacity 0.2s ease;
+}
+
+.folder-content img:hover {
+  opacity: 0.8;
+}
+
+/* ---------- 8. LIGHTBOX (fullscreen slider) ---------- */
+
+.lightbox {
+  display: none;            /* JS adds .open to show it */
+  position: fixed;
+  inset: 0;
+  z-index: 100;             /* above everything, including the header */
+  background: rgba(12, 10, 8, 0.95);
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  /* widescreen view: as big as fits, never cropped */
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+/* shared style for the three buttons */
+.lightbox button {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #faf8f4;
+  cursor: pointer;
+  font-size: 2.5rem;
+  line-height: 1;
+  padding: 1rem;
+  opacity: 0.7;
+}
+
+.lightbox button:hover {
+  opacity: 1;
+}
+
+.lightbox-close {
+  top: 1rem;
+  right: 1.5rem;
+}
+
+.lightbox-prev {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ---------- 9. REVEAL ANIMATION ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- 10. MOBILE ---------- */
+
+@media (max-width: 640px) {
+  .page {
+    padding: 6rem 1.25rem 3rem;
+  }
+
+  .project-hero-text {
+    bottom: 1.5rem;
+    left: 1.25rem;
+  }
+
+  .folder-content {
+    grid-template-columns: repeat(3, 1fr);  /* 3 small squares per row */
+  }
+}

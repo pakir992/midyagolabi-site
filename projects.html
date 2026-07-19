@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- projects.html — list of all projects. Each entry links to
+     that project's own page. -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projects — Midya Golabi interior design" />
+  <title>Midya Golabi — Projects</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-nav">
+      <a href="index.html">Main</a>
+      <a href="about.html">Midya Golabi</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contacts</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Projects</h1>
+
+    <!-- The whole card is ONE link — image + title together.
+         New project = copy this <a> block, change href/img/title. -->
+    <div class="project-list">
+
+      <a class="project-card" href="tiny-house.html">
+        <img src="images/tiny-house-bedroom-skylight.jpg"
+             alt="Tiny House — attic bedroom with skylight" />
+        <h2>Tiny House</h2>
+        <p class="project-card-note">Private residence</p> <!-- TODO: location / year -->
+      </a>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

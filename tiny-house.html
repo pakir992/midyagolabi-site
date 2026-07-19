@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+  tiny-house.html — one project's own page.
+  Anatomy: shaded hero image → short description → images "folder"
+  that opens a preview grid → click a preview → fullscreen slider.
+  New project page = copy this file, swap images + text.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tiny House — interior design project by Midya Golabi" />
+  <title>Tiny House — Midya Golabi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-nav">
+      <a href="index.html">Main</a>
+      <a href="about.html">Midya Golabi</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contacts</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ---- HERO: one image, dark shade over it, title on top.
+         The shade is a CSS gradient overlay (see .project-hero::after) ---- -->
+    <section class="project-hero">
+      <!-- no loading="lazy" here: hero is the first thing seen,
+           must load immediately -->
+      <img src="images/tiny-house-staircase.jpg"
+           alt="Tiny House — copper plaster staircase with sculptural floor lamp" />
+      <div class="project-hero-text">
+        <h1>Tiny House</h1>
+        <p>Private residence</p> <!-- TODO: location / year -->
+      </div>
+    </section>
+
+    <!-- ---- DESCRIPTION ---- -->
+    <section class="page">
+      <p class="about-text">
+        <!-- TODO: your words. Brief, materials, what problem the
+             design solves. 3–5 sentences enough. -->
+        Compact duplex home — dark oak panelling, a copper-plaster
+        staircase with a hidden kitchen beneath it, and graphic
+        red-framed fold-down tables.
+      </p>
+
+      <!-- ---- IMAGES FOLDER ----
+           Button looks like a folder; JS toggles the preview grid.
+           Clicking a preview opens the fullscreen slider (lightbox). -->
+      <button class="folder-toggle">
+        <span class="folder-icon">▸</span> Images <span class="folder-count">7</span>
+      </button>
+
+      <div class="folder-content">
+        <!-- Thumbnails. The lightbox slider reads this list in order,
+             so image #3 here = slide #3 there. -->
+        <img loading="lazy" src="images/tiny-house-bedroom-skylight.jpg" alt="Attic bedroom with skylight and dark oak panelled walls" />
+        <img loading="lazy" src="images/tiny-house-bedroom.jpg" alt="Bedroom with oak panelled headboard wall and two wall lamps" />
+        <img loading="lazy" src="images/tiny-house-lounge.jpg" alt="Reading corner with black and white striped wall and two armchairs" />
+        <img loading="lazy" src="images/tiny-house-staircase.jpg" alt="Copper plaster staircase with sculptural floor lamp" />
+        <img loading="lazy" src="images/tiny-house-dining.jpg" alt="Fold-down tiled tables in red steel frames under a brass pendant" />
+        <img loading="lazy" src="images/tiny-house-hallway.jpg" alt="Hallway with tiled wall shelves and abstract artwork" />
+        <img loading="lazy" src="images/tiny-house-kitchen.jpg" alt="Kitchen tucked under the staircase with copper cabinet fronts" />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ---- LIGHTBOX: hidden fullscreen viewer. JS fills the <img>,
+       arrows/keyboard move between slides, × or Esc closes. ---- -->
+  <div class="lightbox">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <button class="lightbox-prev" aria-label="Previous image">‹</button>
+    <img src="" alt="" />
+    <button class="lightbox-next" aria-label="Next image">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

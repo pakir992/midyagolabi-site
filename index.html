@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+  index.html — MAIN page. Just the monogram.
+  The site is now MULTI-PAGE: each menu item is its own .html file.
+  Links between pages are plain <a href="page.html"> — the browser
+  loads a new document each time. Simplest possible architecture.
+-->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Midya Golabi — Interior Design Portfolio" />
+  <title>Midya Golabi — Interior Design</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- This header block is copy-pasted identically on every page.
+       (Plain HTML has no "include" — frameworks fix that later.) -->
+  <header class="site-header">
+    <button class="menu-toggle" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-nav">
+      <a href="index.html">Main</a>
+      <a href="about.html">Midya Golabi</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contacts</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 class="monogram" aria-label="Midya Golabi">GM</h1>
+      <p class="name">Midya Golabi</p>
+      <p class="tagline">Interior Design</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
